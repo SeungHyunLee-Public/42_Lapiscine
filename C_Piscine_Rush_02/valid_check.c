@@ -1,20 +1,13 @@
-char	valid_check(int argc, char **argv)
+char	valid_check(int argc, char *argv)
 {
 	int i;
-	int j;
 
-	j = 0;
 	i = 0;
-	while (i < argc)
+	while (argv[i] != '\0')
 	{
+		if (argv[i] > '9' && argv[i] < '0')
+			return (1);
 		i++;
-		while ((argv[i][j] <= '9' && argv[i][j] >= '0') || argv[i][j] != '\0')
-		{
-			j++;
-		}
 	}
-	if (argv[i][j] <= '9' && argv[i][j] >= '0')
-		return (1);
-	else
-		return (0);
+	return (0);
 }

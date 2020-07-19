@@ -1,8 +1,9 @@
 #include <unistd.h>
 #include <fcntl.h>
-#include <valid_check.h>
 
 #define BUFF_SIZE 1024
+
+char	valid_check(int argc, char *str);
 
 int		main(int argc, char **argv)
 {
@@ -19,26 +20,13 @@ int		main(int argc, char **argv)
 		{
 			while (i < BUFF_SIZE)
 			{
-				if (valid_check(argv[i][j] == 1))
+				if (valid_check(argc, argv[i]) == 0)
 				{
-					/*search(argc[i][j]*/
 					write(1, &buff[i], 1);
-					i++;
 				}
-				else
-					i++;
+				i++;
 			}
 		}
-/*
-		while (++i < argc)
-		{
-			while (argv[i][j] != '\0')
-			{
-				j++;
-			}
-			write(1, argv[i], j);
-		}
-*/
 		close (fd);
 	}
 	else
